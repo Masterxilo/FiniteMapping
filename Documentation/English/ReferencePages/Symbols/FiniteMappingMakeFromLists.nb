@@ -1,0 +1,331 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9846,        323]
+NotebookOptionsPosition[      8010,        259]
+NotebookOutlinePosition[      8668,        282]
+CellTagsIndexPosition[      8625,        279]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["FiniteMappingMakeFromLists", "Title",
+ CellChangeTimes->{{3.679737748376724*^9, 3.67973775236203*^9}}],
+
+Cell[TextData[{
+ "FiniteMappingMakeFromLists[",
+ StyleBox["a, fa", "TI"],
+ "]"
+}], "Text",
+ CellChangeTimes->{{3.679737840670675*^9, 3.6797379491508083`*^9}, {
+  3.6797380102980175`*^9, 3.6797380500330315`*^9}}],
+
+Cell[TextData[{
+ "takes two lists ",
+ StyleBox["a", "TI"],
+ " and ",
+ StyleBox["fa", "TI"],
+ " and creates a FiniteMapping that maps the first item of ",
+ StyleBox["a", "TI"],
+ " to the first of ",
+ StyleBox["fa", "TI"],
+ ", the second item of ",
+ StyleBox["a", "TI"],
+ " to the second of ",
+ StyleBox["fa", "TI"],
+ " etc."
+}], "Text",
+ CellChangeTimes->{{3.679738052111391*^9, 3.6797380764864893`*^9}, 
+   3.6797382291574087`*^9}],
+
+Cell[TextData[{
+ "FiniteMappingMakeFromLists[",
+ StyleBox["a", "TI"],
+ ", ",
+ StyleBox["fa, universe, range", "TI"],
+ "]"
+}], "Text",
+ CellChangeTimes->{{3.679744426863731*^9, 3.6797444331429553`*^9}}],
+
+Cell[TextData[{
+ "sets universe and range of the created finite mapping to the patterns given \
+instead of the default heuristics. Verifies that all ",
+ StyleBox["a", "TI"],
+ " and ",
+ StyleBox["fa", "TI"],
+ " match their respective patterns."
+}], "Text",
+ CellChangeTimes->{{3.6797472922759504`*^9, 3.67974736294526*^9}}],
+
+Cell["hello", "Text",
+ CellChangeTimes->{{3.6797474265842543`*^9, 3.6797474390994215`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Details", "Chapter",
+ CellChangeTimes->{{3.6797382992512197`*^9, 3.6797383001731377`*^9}}],
+
+Cell["\<\
+FiniteMappingMakeFromLists works with one-dimensional SparseArrays\
+\>", "Item",
+ CellChangeTimes->{{3.679738301891967*^9, 3.6797383080623603`*^9}, {
+  3.6797383687080545`*^9, 3.6797383727741385`*^9}, {3.679747782794733*^9, 
+  3.6797477846854415`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Examples", "Chapter",
+ CellChangeTimes->{{3.6797377203782077`*^9, 3.6797377213782463`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FiniteMappingMakeFromLists", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"x", ",", "y"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "2"}], "}"}]}], "]"}], "//", "FMAsRules"}]], "Input",
+ CellChangeTimes->{{3.679738083251711*^9, 3.6797380962689342`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"x", "\[Rule]", "1"}], ",", 
+   RowBox[{"y", "\[Rule]", "2"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.679738105200239*^9}]
+}, Open  ]],
+
+Cell["\<\
+FiniteMappingMakeFromLists works with SparseArrays, potentially reducing \
+memory usage:\
+\>", "Text",
+ CellChangeTimes->{
+  3.6797384296103*^9, {3.679747856119603*^9, 3.6797478699739327`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FiniteMappingMakeFromLists", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"x", ",", "y"}], "}"}], ",", 
+    RowBox[{"SparseArray", "[", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0"}], "}"}], "]"}]}], "]"}], "//", 
+  "FMAsRules"}]], "Input",
+ CellChangeTimes->{{3.6797383915797377`*^9, 3.679738405596117*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"x", "\[Rule]", "1"}], ",", 
+   RowBox[{"y", "\[Rule]", "0"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6797384072326837`*^9}]
+}, Open  ]],
+
+Cell["But they must be one-dimensional", "Text",
+ CellChangeTimes->{{3.679747791501319*^9, 3.679747796868041*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FiniteMappingMakeFromLists", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y"}], "}"}], ",", 
+   RowBox[{"SparseArray", "[", 
+    RowBox[{"{", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0"}], "}"}], "}"}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.679747798915006*^9, 3.6797478025035067`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FiniteMapping", "::", "error"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"\[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"\\\\\\\"FiniteMappingMakeFromLists called with wrong \
+arguments\\\\\\\"\\\", \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"x\\\", \\\",\
+\\\", \\\"y\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"SparseArray\\\", \\\"[\
+\\\", RowBox[{\\\"Automatic\\\", \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{\\\"1\\\", \\\",\\\", \\\"2\\\"}], \\\"}\\\"}], \\\",\\\", \\\"0\\\", \
+\\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"1\\\", \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"{\\\", RowBox[{\\\"0\\\", \\\",\\\", \
+\\\"1\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"{\\\", \\\
+\"1\\\", \\\"}\\\"}], \\\"}\\\"}]}], \\\"}\\\"}], \\\",\\\", \
+RowBox[{\\\"{\\\", \\\"1\\\", \\\"}\\\"}]}], \\\"}\\\"}]}], \\\"]\\\"}]}], \\\
+\"}\\\"}]\\)\[NoBreak]\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.67974780299658*^9}],
+
+Cell[BoxData["$Failed"], "Output",
+ CellChangeTimes->{3.67974780299658*^9}]
+}, Open  ]],
+
+Cell["The two lists must have the same amount of elements", "Text",
+ CellChangeTimes->{{3.6797384315635405`*^9, 3.67973843828445*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FiniteMappingMakeFromLists", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y"}], "}"}], ",", 
+   RowBox[{"{", "1", "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.679738442419757*^9, 3.679738442560383*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FiniteMapping", "::", "error"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"\[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"\\\\\\\"FiniteMappingMakeFromLists called with wrong \
+arguments\\\\\\\"\\\", \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"x\\\", \\\",\
+\\\", \\\"y\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \\\"1\\\", \
+\\\"}\\\"}]}], \\\"}\\\"}]\\)\[NoBreak]\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6797384432758408`*^9}],
+
+Cell[BoxData["$Failed"], "Output",
+ CellChangeTimes->{3.6797384432758408`*^9}]
+}, Open  ]],
+
+Cell["The first list cannot have any repeated elements", "Text",
+ CellChangeTimes->{{3.679738891969922*^9, 3.679738899064148*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FiniteMappingMakeFromLists", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"x", ",", "x"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6797389490653152`*^9, 3.679738962314189*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FiniteMapping", "::", "error"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"\[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"\\\\\\\"FiniteMappingMakeFromLists called with wrong \
+arguments\\\\\\\"\\\", \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"x\\\", \\\",\
+\\\", \\\"x\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"1\\\
+\", \\\",\\\", \\\"2\\\"}], \\\"}\\\"}]}], \\\"}\\\"}]\\)\[NoBreak]\"\>"}]], \
+"Message", "MSG",
+ CellChangeTimes->{3.6797390443947845`*^9}],
+
+Cell[BoxData["$Failed"], "Output",
+ CellChangeTimes->{{3.679738957516798*^9, 3.6797389627204337`*^9}, {
+  3.679739015086832*^9, 3.6797390443947845`*^9}}]
+}, Open  ]],
+
+Cell["\<\
+With just two arguments, FiniteMappingMakeFromLists uses default universe and \
+range determination heuristics\
+\>", "Text",
+ CellChangeTimes->{{3.6797391131689405`*^9, 3.679739153001216*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FiniteMappingMakeFromLists", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"x", ",", "y"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "2"}], "}"}]}], "]"}], "//", 
+  "FMUniverseRange"}]], "Input",
+ CellChangeTimes->{{3.6797391343450174`*^9, 3.679739143313895*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+Saveable->True,
+WindowSize->{751, 792},
+WindowMargins->{{365, Automatic}, {Automatic, 86}},
+TaggingRules->{
+ "Metadata" -> {
+   "title" -> "FiniteMappingMakeFromLists", "label" -> 
+    "FiniteMapping` Symbol", "summary" -> 
+    "FiniteMappingMakeFromLists symbol summary (::usage?)", "type" -> 
+    "Symbol", "uri" -> "FiniteMapping/ref/FiniteMappingMakeFromLists", 
+    "index" -> True}},
+FrontEndVersion->"10.4 for Microsoft Windows (64-bit) (April 11, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 108, 1, 90, "Title"],
+Cell[691, 25, 211, 6, 30, "Text"],
+Cell[905, 33, 431, 16, 49, "Text"],
+Cell[1339, 51, 201, 7, 30, "Text"],
+Cell[1543, 60, 322, 8, 49, "Text"],
+Cell[1868, 70, 91, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[1984, 75, 96, 1, 64, "Chapter"],
+Cell[2083, 78, 262, 5, 29, "Item"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2382, 88, 97, 1, 64, "Chapter"],
+Cell[CellGroupData[{
+Cell[2504, 93, 305, 8, 31, "Input"],
+Cell[2812, 103, 175, 5, 31, "Output"]
+}, Open  ]],
+Cell[3002, 111, 203, 5, 30, "Text"],
+Cell[CellGroupData[{
+Cell[3230, 120, 350, 10, 31, "Input"],
+Cell[3583, 132, 177, 5, 31, "Output"]
+}, Open  ]],
+Cell[3775, 140, 114, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[3914, 145, 336, 9, 31, "Input"],
+Cell[4253, 156, 989, 17, 41, "Message"],
+Cell[5245, 175, 75, 1, 31, "Output"]
+}, Open  ]],
+Cell[5335, 179, 134, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[5494, 184, 241, 6, 31, "Input"],
+Cell[5738, 192, 499, 10, 22, "Message"],
+Cell[6240, 204, 78, 1, 31, "Output"]
+}, Open  ]],
+Cell[6333, 208, 130, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[6488, 213, 268, 7, 31, "Input"],
+Cell[6759, 222, 533, 11, 22, "Message"],
+Cell[7295, 235, 153, 2, 31, "Output"]
+}, Open  ]],
+Cell[7463, 240, 202, 4, 49, "Text"],
+Cell[7668, 246, 314, 9, 31, "Input"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

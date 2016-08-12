@@ -1,0 +1,93 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      2387,         85]
+NotebookOptionsPosition[      1967,         65]
+NotebookOutlinePosition[      2313,         80]
+CellTagsIndexPosition[      2270,         77]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["For prototyping FiniteMapping tests", "Title",
+ CellChangeTimes->{{3.6791439262492437`*^9, 3.679143929960906*^9}, {
+  3.679167643230383*^9, 3.6791676465313325`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"<<", "FiniteMapping`"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"FiniteMappingMakeFromList", "@", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "0"}], "}"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"FMAsRules", "@", 
+  RowBox[{"FMMapValues", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"2", "#"}], "&"}], ",", "f"}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.679154477594477*^9, 3.67915455780262*^9}, {
+   3.679154588188759*^9, 3.6791545886262245`*^9}, 3.679155696011654*^9, {
+   3.6791558145478697`*^9, 3.679155823121416*^9}, {3.679155853574684*^9, 
+   3.6791558840946665`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"FiniteMapping", "[", 
+  RowBox[{"Array", ",", "1", ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0"}], "}"}]}], "]"}]], "Output",
+ CellChangeTimes->{{3.6791558236213913`*^9, 3.679155846027749*^9}, 
+   3.6791558795641317`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"{", "1", "}"}], "\[Rule]", "2"}], ",", 
+   RowBox[{
+    RowBox[{"{", "2", "}"}], "\[Rule]", "0"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.6791558236213913`*^9, 3.679155846027749*^9}, 
+   3.679155879579757*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{942, 1008},
+WindowMargins->{{Automatic, 360}, {Automatic, 568}},
+FrontEndVersion->"10.4 for Microsoft Windows (64-bit) (April 11, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 171, 2, 90, "Title"],
+Cell[CellGroupData[{
+Cell[776, 28, 631, 15, 72, "Input"],
+Cell[1410, 45, 249, 6, 31, "Output"],
+Cell[1662, 53, 277, 8, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

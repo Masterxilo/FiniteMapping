@@ -1,0 +1,415 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     15038,        407]
+NotebookOptionsPosition[     12902,        338]
+NotebookOutlinePosition[     13521,        360]
+CellTagsIndexPosition[     13478,        357]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["FiniteMapping Package", "Title",
+ CellChangeTimes->{{3.6797366737349634`*^9, 3.6797366773646765`*^9}}],
+
+Cell[TextData[{
+ "This package deals with mappings of the form\n\n\tf: A \[RightArrow] f(A)\n\
+\t\n\tA \[Subset]",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["Universe", "f"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", f(A)\[Subset]",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["Range", "f"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\n\t\nwhere A is finite and ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["Universe", "f"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["Range", "f"], TraditionalForm]]],
+ " are sets of expressions defined via patterns. The mathematical notation is \
+not quite accurate here, because the implementation considers A to be a list \
+with a definite order, the same goes for f(A). "
+}], "Text",
+ CellChangeTimes->{{3.6797366847558384`*^9, 3.6797368915478697`*^9}, {
+  3.67973871082927*^9, 3.679738815251115*^9}}],
+
+Cell["\<\
+Because of this, such a mapping can also be understood as a specially indexed \
+list. We also support indexing using integral numbers as for usual lists.\
+\>", "Text",
+ CellChangeTimes->{{3.679738557594946*^9, 3.679738614394614*^9}, {
+  3.6797388323553767`*^9, 3.6797388458862667`*^9}, {3.679752521903059*^9, 
+  3.6797525254616976`*^9}}],
+
+Cell["\<\
+This package aims to abstract away different ways of representing such \
+mappings or data structures and doing lookups.\
+\>", "Text",
+ CellChangeTimes->{{3.6797375301431656`*^9, 3.6797375401260147`*^9}, {
+  3.6797385305798254`*^9, 3.6797385357672467`*^9}}],
+
+Cell["\<\
+This package can efficiently handle multiple special types of maps, for \
+example:\
+\>", "Text",
+ CellChangeTimes->{{3.6797368847510104`*^9, 3.6797368899229703`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+maps that are \[OpenCurlyDoubleQuote]sparse\[CloseCurlyDoubleQuote] in the \
+sense that for most a in A, f(a) = b for a fixed b\
+\>", "Item",
+ CellChangeTimes->{3.6797368712197237`*^9}],
+
+Cell["\<\
+maps where f(A) can be put in a PackedArray, and tensors/arrays of any \
+dimension\
+\>", "Item",
+ CellChangeTimes->{{3.6797368975477695`*^9, 3.6797369041415524`*^9}, {
+  3.679736936960918*^9, 3.6797369378515377`*^9}}],
+
+Cell["\<\
+maps where A can be understood as a set of Position/Extract-style indices \
+selecting parts of an expression\
+\>", "Item",
+ CellChangeTimes->{{3.679737443642664*^9, 3.6797374761063538`*^9}}],
+
+Cell["anything an Association can represent effectively", "Item",
+ CellChangeTimes->{{3.6797374958770194`*^9, 3.67973750958788*^9}}]
+}, Open  ]],
+
+Cell["It efficiently supports operations such as:", "Text",
+ CellChangeTimes->{3.67973694818871*^9}],
+
+Cell[CellGroupData[{
+
+Cell["checking whether f is injective", "Item",
+ CellChangeTimes->{{3.679736955924746*^9, 3.6797369573593197`*^9}, {
+  3.6797370232980523`*^9, 3.679737032126224*^9}}],
+
+Cell["computing the inverse and generalized inverse", "Item",
+ CellChangeTimes->{{3.679736955924746*^9, 3.6797369573593197`*^9}, {
+  3.6797370232980523`*^9, 3.679737041604767*^9}}],
+
+Cell["computing f(a)", "Item",
+ CellChangeTimes->{{3.6797370491004333`*^9, 3.679737057110513*^9}}],
+
+Cell["computing f(A\[CloseCurlyQuote]) for any A\[CloseCurlyQuote] subset of \
+A", "Item",
+ CellChangeTimes->{3.679737063235936*^9}],
+
+Cell["retrieving A (which may be stored only implicitly)", "Item",
+ CellChangeTimes->{{3.679737080688808*^9, 3.679737091579646*^9}}],
+
+Cell["computing the composition f \[EmptySmallCircle] g", "Item",
+ CellChangeTimes->{{3.6797371007512846`*^9, 3.6797371389234138`*^9}, 
+   3.679737243426978*^9, {3.6797525484028854`*^9, 3.6797525484028854`*^9}}],
+
+Cell["\<\
+operations operating on List and/or Association as well as Arrays/Matrices \
+and Dataset\
+\>", "Item",
+ CellChangeTimes->{{3.6797371007512846`*^9, 3.6797371389234138`*^9}, 
+   3.679737243426978*^9, {3.6797525484028854`*^9, 3.6797525803868155`*^9}, {
+   3.6797538513294315`*^9, 3.679753855596439*^9}}],
+
+Cell["operations on Images", "Item",
+ CellChangeTimes->{{3.6797371007512846`*^9, 3.6797371389234138`*^9}, 
+   3.679737243426978*^9, {3.6797525484028854`*^9, 3.6797525803868155`*^9}, {
+   3.6797538513294315`*^9, 3.6797538750012994`*^9}}],
+
+Cell["operations on trees", "Item",
+ CellChangeTimes->{{3.6797371007512846`*^9, 3.6797371389234138`*^9}, 
+   3.679737243426978*^9, {3.6797525484028854`*^9, 3.6797525803868155`*^9}, {
+   3.6797538513294315`*^9, 3.679753878264224*^9}}]
+}, Open  ]],
+
+Cell["\<\
+There is special handling of finite mappings that return finite mappings with \
+n shared domains or levels, i.e. f of the form\
+\>", "Text",
+ CellChangeTimes->{{3.679752609300233*^9, 3.6797526412076287`*^9}, {
+  3.6797538310493193`*^9, 3.679753836530796*^9}}],
+
+Cell[TextData[{
+ "\tf: ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["A", "1"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " \[RightArrow] (",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["A", "2"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\[RightArrow] (... \[RightArrow] ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    SubscriptBox["A", "n"]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " \[RightArrow] C|undefined )...)"
+}], "Text",
+ CellChangeTimes->{{3.6797526443763075`*^9, 3.6797526549801846`*^9}, {
+  3.67975270821395*^9, 3.6797527445357437`*^9}, {3.6797530185169134`*^9, 
+  3.679753022915715*^9}}],
+
+Cell["\<\
+Which can be used to represent any-dimensional uniform sparse or dense arrays \
+or \[OpenCurlyDoubleQuote]grids\[CloseCurlyDoubleQuote] and *Datasets*.\
+\>", "Text",
+ CellChangeTimes->{{3.679752662556346*^9, 3.6797527038763876`*^9}, {
+  3.6797527623184986`*^9, 3.6797527653871117`*^9}, {3.6797530285387564`*^9, 
+  3.6797530391220436`*^9}, {3.6797532310076933`*^9, 3.6797532329031615`*^9}}],
+
+Cell["\<\
+Some performance hints will need to be given to find the most efficient \
+algorithms and representations, depending on the operations that are needed \
+most. An appropriate constructor must be chosen\
+\>", "Text",
+ CellChangeTimes->{{3.6797371569159985`*^9, 3.6797371981264863`*^9}}],
+
+Cell["\<\
+This can be considered a kind of Association, (hash) map or generalization of \
+List (Vector), Matrix, Tensor, SparseMatrix, Image, Image3D, immutable \
+expression, struct, Dataset etc.\
+\>", "Text",
+ CellChangeTimes->{{3.67973755275237*^9, 3.67973757043705*^9}, {
+  3.6797534674398737`*^9, 3.679753474628784*^9}}],
+
+Cell["\<\
+It can also be used for various reindexing operations, such as treating a \
+PackedArray as if it where sparse or ragged, or reversing a list without \
+actually doing the reversal.\
+\>", "Text",
+ CellChangeTimes->{{3.6797456907495885`*^9, 3.6797457526346264`*^9}}],
+
+Cell["\<\
+Future improvements could allow storing the data and accessors only \
+implicitly/lazily, such that this could be understood as an iteratable \
+implicit data structure.\
+\>", "Text",
+ CellChangeTimes->{{3.6797457537303057`*^9, 3.6797458107612743`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Names of commands", "Chapter",
+ CellChangeTimes->{{3.6797373322674813`*^9, 3.6797373347207427`*^9}}],
+
+Cell[TextData[{
+ "Functions that construct FiniteMappings from other representations of such \
+mappings have names of the form ",
+ StyleBox["FiniteMappingMake*", "Code"]
+}], "Text",
+ CellChangeTimes->{{3.6797373431906767`*^9, 3.679737369752062*^9}, {
+  3.6797376114398375`*^9, 3.6797376277055635`*^9}, {3.6797464628094635`*^9, 
+  3.679746464684528*^9}}],
+
+Cell[TextData[{
+ "All functions operating on at least one FiniteMapping start with ",
+ StyleBox["FM", "Code"],
+ " and the first argument is always a FiniteMapping (unless they are operator \
+forms). ",
+ StyleBox["FiniteMappingQ", "Code"],
+ " is the only exception to this rule."
+}], "Text",
+ CellChangeTimes->{{3.6797373812742414`*^9, 3.6797374084550805`*^9}, 
+   3.6797376097356634`*^9, {3.6797464106785374`*^9, 3.679746418952529*^9}, {
+   3.6797487989543943`*^9, 3.679748805490179*^9}}],
+
+Cell[TextData[{
+ "Functions that don\[CloseCurlyQuote]t fit into this scheme start with ",
+ StyleBox["FMUtil", "Code"]
+}], "Text",
+ CellChangeTimes->{{3.6797399798621407`*^9, 3.679739992219905*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["FiniteMappingSyntax file", "Chapter",
+ CellChangeTimes->{{3.6797372044229865`*^9, 3.679737209092918*^9}, {
+  3.6797458801582623`*^9, 3.6797458804864235`*^9}}],
+
+Cell["\<\
+This file loads the FiniteMapping package publicly and then extends built-in \
+commands in a natural way to work with FiniteMapping objects. It also changes \
+the output formatting of these objects to reveal less about their internal \
+structure and more about their conceptual meaning, similar to how \
+Associations or SparseArrays are handled. Overloaded functions include:\
+\>", "Text",
+ CellChangeTimes->{{3.6797372109992228`*^9, 3.679737288766717*^9}, {
+  3.679740026927617*^9, 3.679740033568272*^9}, {3.679740408263157*^9, 
+  3.679740414518792*^9}, {3.679745884262471*^9, 3.679745897703837*^9}, {
+  3.6797478902955904`*^9, 3.6797478926351695`*^9}, {3.679749081433838*^9, 
+  3.6797490872135324`*^9}}],
+
+Cell[BoxData[{"Part", "\[IndentingNewLine]", "Length", "\[IndentingNewLine]", 
+ RowBox[{"f", "[", "x", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"f", "[", 
+  RowBox[{"{", 
+   RowBox[{"x", ",", "y"}], "}"}], 
+  "]"}], "\[IndentingNewLine]", "InverseFunction", "\[IndentingNewLine]", \
+"Map", "\[IndentingNewLine]", "MapAt", "\[IndentingNewLine]", "MapIndexed", "\
+\[IndentingNewLine]", "MapAll", "\[IndentingNewLine]", "MapThread", "\
+\[IndentingNewLine]", "Key", "\[IndentingNewLine]", "Keys", "\
+\[IndentingNewLine]", "Values", "\[IndentingNewLine]", "ReplacePart", "\
+\[IndentingNewLine]", "Extract", "\[IndentingNewLine]", "Insert", "\
+\[IndentingNewLine]", "Delete", "\[IndentingNewLine]", "Position", "\
+\[IndentingNewLine]", "Take", "\[IndentingNewLine]", "Drop", "\
+\[IndentingNewLine]", "Append", "\[IndentingNewLine]", "Prepend", "\
+\[IndentingNewLine]", "AppendTo", "\[IndentingNewLine]", "PrependTo", "\
+\[IndentingNewLine]", "Association", "\[IndentingNewLine]", "Normal", "\
+\[IndentingNewLine]", "Select", "\[IndentingNewLine]", "Cases", "\
+\[IndentingNewLine]", "Dimensions", "\[IndentingNewLine]", "Lookup", "\
+\[IndentingNewLine]", "KeyExistsQ"}], "Input",
+ CellChangeTimes->{{3.6797400369902544`*^9, 3.6797400944131317`*^9}, {
+  3.6797401521477776`*^9, 3.6797401840487614`*^9}, {3.679740215016988*^9, 
+  3.6797402747779536`*^9}, {3.6797403272043505`*^9, 3.6797403643708515`*^9}, {
+  3.6797443543511705`*^9, 3.6797443603022842`*^9}, {3.6797465781664624`*^9, 
+  3.679746581177023*^9}, {3.6797479622861795`*^9, 3.679747962520566*^9}, {
+  3.6797519000472393`*^9, 3.6797519077101927`*^9}, {3.679752217266946*^9, 
+  3.679752229150757*^9}}],
+
+Cell[TextData[{
+ "And many ",
+ StyleBox["Listable", "Code"],
+ " operations such as"
+}], "Text",
+ CellChangeTimes->{{3.6797520246107397`*^9, 3.6797520356007104`*^9}}],
+
+Cell[BoxData["Times"], "Input",
+ CellChangeTimes->{{3.679752147277486*^9, 3.679752147277486*^9}}],
+
+Cell["\<\
+However, because of the low-level nature of attributes, we cannot \
+automatically make all Listable operations work on FiniteMapping, unlike \
+Association where this does work.\
+\>", "Text",
+ CellChangeTimes->{{3.679752078296816*^9, 3.6797521168769417`*^9}, {
+  3.679752165970099*^9, 3.679752174490146*^9}}],
+
+Cell["\<\
+For consistency, it does not overload operations that do not work with either \
+Associations or lists, such as\
+\>", "Text",
+ CellChangeTimes->{3.6797491840182505`*^9}],
+
+Cell[BoxData[
+ RowBox[{"AssociateTo", " ", 
+  RowBox[{"(*", 
+   RowBox[{"FMUpdate", " ", "implements", " ", "this", " ", "functionality"}],
+    "*)"}]}]], "Input",
+ CellChangeTimes->{{3.6797465613444347`*^9, 3.679746572745758*^9}}],
+
+Cell["\<\
+All overloadings are done using UpValues and Tag set such that these symbols \
+don\[CloseCurlyQuote]t have to be unprotected and good efficiency is \
+maintained.\
+\>", "Text",
+ CellChangeTimes->{{3.6797403670124674`*^9, 3.679740394955786*^9}, 
+   3.6797465484889402`*^9, {3.6797491051179247`*^9, 3.6797491869723935`*^9}}],
+
+Cell["\<\
+The internal operation of the FiniteMapping package is not affected by this \
+since it accesses the structure only via destructuring \
+\>", "Text",
+ CellChangeTimes->{{3.6797491932258453`*^9, 3.67974922387833*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+Saveable->True,
+WindowSize->{905, 792},
+WindowMargins->{{Automatic, 373}, {2, Automatic}},
+TaggingRules->{
+ "Metadata" -> {
+   "title" -> "FiniteMapping", "label" -> "FiniteMapping Guide", "summary" -> 
+    "FiniteMapping is ...", "type" -> "Guide", "uri" -> 
+    "FiniteMapping/guide/FiniteMapping", "index" -> True}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"10.4 for Microsoft Windows (64-bit) (April 11, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 108, 1, 113, "Title"],
+Cell[691, 25, 928, 26, 240, "Text"],
+Cell[1622, 53, 347, 6, 63, "Text"],
+Cell[1972, 61, 266, 5, 63, "Text"],
+Cell[2241, 68, 176, 4, 38, "Text"],
+Cell[CellGroupData[{
+Cell[2442, 76, 195, 4, 37, "Item"],
+Cell[2640, 82, 227, 5, 37, "Item"],
+Cell[2870, 89, 200, 4, 59, "Item"],
+Cell[3073, 95, 132, 1, 37, "Item"]
+}, Open  ]],
+Cell[3220, 99, 100, 1, 38, "Text"],
+Cell[CellGroupData[{
+Cell[3345, 104, 166, 2, 37, "Item"],
+Cell[3514, 108, 180, 2, 37, "Item"],
+Cell[3697, 112, 98, 1, 37, "Item"],
+Cell[3798, 115, 132, 2, 37, "Item"],
+Cell[3933, 119, 132, 1, 37, "Item"],
+Cell[4068, 122, 211, 2, 37, "Item"],
+Cell[4282, 126, 310, 6, 37, "Item"],
+Cell[4595, 134, 236, 3, 37, "Item"],
+Cell[4834, 139, 233, 3, 37, "Item"]
+}, Open  ]],
+Cell[5082, 145, 269, 5, 63, "Text"],
+Cell[5354, 152, 641, 21, 38, "Text"],
+Cell[5998, 175, 399, 6, 63, "Text"],
+Cell[6400, 183, 293, 5, 88, "Text"],
+Cell[6696, 190, 324, 6, 63, "Text"],
+Cell[7023, 198, 273, 5, 63, "Text"],
+Cell[7299, 205, 261, 5, 63, "Text"],
+Cell[CellGroupData[{
+Cell[7585, 214, 106, 1, 80, "Chapter"],
+Cell[7694, 217, 353, 7, 63, "Text"],
+Cell[8050, 226, 488, 10, 88, "Text"],
+Cell[8541, 238, 198, 4, 38, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8776, 247, 164, 2, 80, "Chapter"],
+Cell[8943, 251, 715, 11, 113, "Text"],
+Cell[9661, 264, 1649, 25, 727, "Input"],
+Cell[11313, 291, 165, 5, 38, "Text"],
+Cell[11481, 298, 97, 1, 36, "Input"],
+Cell[11581, 301, 317, 6, 63, "Text"],
+Cell[11901, 309, 178, 4, 63, "Text"],
+Cell[12082, 315, 231, 5, 36, "Input"],
+Cell[12316, 322, 331, 6, 63, "Text"],
+Cell[12650, 330, 224, 4, 63, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

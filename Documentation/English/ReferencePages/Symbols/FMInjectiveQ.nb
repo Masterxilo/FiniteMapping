@@ -1,0 +1,195 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5096,        187]
+NotebookOptionsPosition[      3760,        137]
+NotebookOutlinePosition[      4416,        160]
+CellTagsIndexPosition[      4373,        157]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["FMInjectiveQ", "Title",
+ CellChangeTimes->{{3.679737748376724*^9, 3.67973775236203*^9}, {
+  3.679747241183155*^9, 3.6797472428863497`*^9}}],
+
+Cell[TextData[{
+ "FMInjectiveQ[",
+ StyleBox["f", "TI"],
+ "]"
+}], "Text",
+ CellChangeTimes->{{3.679737840670675*^9, 3.6797379491508083`*^9}, {
+  3.6797380102980175`*^9, 3.6797380500330315`*^9}, {3.6797472557146807`*^9, 
+  3.6797472589494*^9}}],
+
+Cell[TextData[{
+ "Takes two lists ",
+ StyleBox["a", "TI"],
+ " and ",
+ StyleBox["fa", "TI"],
+ " and creates a FiniteMapping that maps the first item of ",
+ StyleBox["a", "TI"],
+ " to the first of ",
+ StyleBox["fa", "TI"],
+ ", the second item of ",
+ StyleBox["a", "TI"],
+ " to the second of ",
+ StyleBox["fa", "TI"],
+ " etc."
+}], "Text",
+ CellChangeTimes->{{3.679738052111391*^9, 3.6797380764864893`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Details", "Chapter",
+ CellChangeTimes->{{3.6797479778815928`*^9, 3.679747978785138*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+FMInjectiveQ has Attribute HoldAll, such that when it is given a symbol \
+storing a FiniteMapping it can modify that mapping in-place and have it cache \
+the result of this potentially expensive test.\
+\>", "Item",
+ CellChangeTimes->{{3.679748004720014*^9, 3.679748079363824*^9}}],
+
+Cell["\<\
+This test is executed the check whether the inverse can be computed.\
+\>", "Item",
+ CellChangeTimes->{{3.679748004720014*^9, 3.679748101749712*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Examples", "Chapter",
+ CellChangeTimes->{{3.6797377203782077`*^9, 3.6797377213782463`*^9}}],
+
+Cell["This mapping is not invective", "Text",
+ CellChangeTimes->{{3.679748115016998*^9, 3.679748121076913*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FMInjectiveQ", "@", 
+  RowBox[{"FiniteMappingMakeFromLists", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"x", ",", "y"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "1"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.679738083251711*^9, 3.6797380962689342`*^9}, {
+  3.6797481061956687`*^9, 3.6797481364129114`*^9}}],
+
+Cell[BoxData["False"], "Output",
+ CellChangeTimes->{3.679738105200239*^9, 3.679748142891491*^9}]
+}, Open  ]],
+
+Cell["This one is", "Text",
+ CellChangeTimes->{{3.6797481236638927`*^9, 3.6797481251629286`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FMInjectiveQ", "@", 
+  RowBox[{"FiniteMappingMakeFromLists", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"x", ",", "y"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "2"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6797481134743433`*^9, 3.6797481404286833`*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{3.6797481412720237`*^9}]
+}, Open  ]],
+
+Cell["\<\
+The argument must be a FiniteMapping, otherwise the function stays \
+unevaluated:\
+\>", "Text",
+ CellChangeTimes->{{3.6797481508923717`*^9, 3.6797481563605795`*^9}, {
+  3.6797482085191135`*^9, 3.679748215428636*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FMInjectiveQ", "@", "x"}]], "Input",
+ CellChangeTimes->{3.6797481617320776`*^9}],
+
+Cell[BoxData[
+ RowBox[{"FMInjectiveQ", "[", "x", "]"}]], "Output",
+ CellChangeTimes->{3.679748162107093*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+Saveable->True,
+WindowSize->{942, 1008},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+TaggingRules->{
+ "Metadata" -> {
+   "title" -> "FMInjectiveQ", "label" -> 
+    "FiniteMapping Symbol", "summary" -> 
+    "FMInjectiveQ symbol summary (::usage?)", "type" -> 
+    "Symbol", "uri" -> "FiniteMapping/ref/FMInjectiveQ", 
+    "index" -> True}},
+FrontEndVersion->"10.4 for Microsoft Windows (64-bit) (April 11, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 145, 2, 90, "Title"],
+Cell[728, 26, 242, 7, 30, "Text"],
+Cell[973, 35, 403, 15, 49, "Text"],
+Cell[CellGroupData[{
+Cell[1401, 54, 94, 1, 64, "Chapter"],
+Cell[CellGroupData[{
+Cell[1520, 59, 290, 5, 45, "Item"],
+Cell[1813, 66, 158, 3, 29, "Item"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2020, 75, 97, 1, 64, "Chapter"],
+Cell[2120, 78, 111, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[2256, 83, 360, 9, 31, "Input"],
+Cell[2619, 94, 96, 1, 31, "Output"]
+}, Open  ]],
+Cell[2730, 98, 97, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[2852, 103, 309, 8, 31, "Input"],
+Cell[3164, 113, 75, 1, 31, "Output"]
+}, Open  ]],
+Cell[3254, 117, 226, 5, 30, "Text"],
+Cell[CellGroupData[{
+Cell[3505, 126, 104, 2, 31, "Input"],
+Cell[3612, 130, 108, 2, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
