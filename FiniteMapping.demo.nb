@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      2387,         85]
-NotebookOptionsPosition[      1967,         65]
-NotebookOutlinePosition[      2313,         80]
-CellTagsIndexPosition[      2270,         77]
+NotebookDataLength[     19775,        563]
+NotebookOptionsPosition[     18496,        516]
+NotebookOutlinePosition[     19247,        543]
+CellTagsIndexPosition[     19115,        537]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -28,11 +28,10 @@ Cell[CellGroupData[{
 
 Cell[BoxData[{
  RowBox[{"<<", "FiniteMapping`"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"f", "=", 
-   RowBox[{"FiniteMappingMakeFromList", "@", 
-    RowBox[{"{", 
-     RowBox[{"1", ",", "0"}], "}"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"f", "=", 
+  RowBox[{"FiniteMappingMakeFromList", "@", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0"}], "}"}]}]}], "\[IndentingNewLine]", 
  RowBox[{"FMAsRules", "@", 
   RowBox[{"FMMapValues", "[", 
    RowBox[{
@@ -41,7 +40,7 @@ Cell[BoxData[{
  CellChangeTimes->{{3.679154477594477*^9, 3.67915455780262*^9}, {
    3.679154588188759*^9, 3.6791545886262245`*^9}, 3.679155696011654*^9, {
    3.6791558145478697`*^9, 3.679155823121416*^9}, {3.679155853574684*^9, 
-   3.6791558840946665`*^9}}],
+   3.6791558840946665`*^9}, 3.680370044991597*^9}],
 
 Cell[BoxData[
  RowBox[{"FiniteMapping", "[", 
@@ -49,7 +48,8 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"1", ",", "0"}], "}"}]}], "]"}]], "Output",
  CellChangeTimes->{{3.6791558236213913`*^9, 3.679155846027749*^9}, 
-   3.6791558795641317`*^9}],
+   3.6791558795641317`*^9, {3.6803700423493185`*^9, 3.680370045522259*^9}, 
+   3.680370210283845*^9}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -59,12 +59,463 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"{", "2", "}"}], "\[Rule]", "0"}]}], "}"}]], "Output",
  CellChangeTimes->{{3.6791558236213913`*^9, 3.679155846027749*^9}, 
-   3.679155879579757*^9}]
+   3.6791558795641317`*^9, {3.6803700423493185`*^9, 3.680370045522259*^9}, 
+   3.6803702102848463`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "FiniteMappingMakeFromArray"}]], "Input",
+ CellChangeTimes->{{3.6803702260565414`*^9, 3.6803702338172483`*^9}}],
+
+Cell[BoxData[
+ StyleBox["\<\"FiniteMappingMakeFromArray[\!\(\*StyleBox[\\\"(array_)?ArrayQ\\\
+\", \\\"TI\\\"]\)]\\n\tfrom an n-d dense \
+array\\nFiniteMappingMakeFromArray[\!\(\*StyleBox[\\\"array_, level_Integer \
+/; level > 0\\\", \\\"TI\\\"]\)] /; IsArrayAtLevel[array, level]\\n\tat a \
+given level\"\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.6803702342687716`*^9},
+ CellTags->"Info3183680377434-6171725"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"??", "FiniteMapping`*"}]], "Input",
+ CellChangeTimes->{{3.6803701535801067`*^9, 3.6803701547495522`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ DynamicModuleBox[{Typeset`open$$ = True}, 
+  PaneSelectorBox[{False->
+   RowBox[{
+    OpenerBox[Dynamic[Typeset`open$$],
+     ImageSize->Small], 
+    StyleBox["FiniteMapping`", "InfoHeading"]}], True->GridBox[{
+     {
+      RowBox[{
+       OpenerBox[Dynamic[Typeset`open$$],
+        ImageSize->Small], 
+       StyleBox["FiniteMapping`", "InfoHeading"]}]},
+     {GridBox[{
+        {
+         ButtonBox["FiniteMapping",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FiniteMapping", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMDeleteOne",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMDeleteOne", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMInverse",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMInverse", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"]},
+        {
+         ButtonBox["FiniteMappingMakeConstant",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {
+            "FiniteMappingMakeConstant", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMDomain",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMDomain", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMLength",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMLength", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"]},
+        {
+         ButtonBox["FiniteMappingMakeFromArray",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {
+            "FiniteMappingMakeFromArray", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMDomainCases",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMDomainCases", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMMakeListDomainNames",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {
+            "FMMakeListDomainNames", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"]},
+        {
+         ButtonBox["FiniteMappingMakeFromExpression",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {
+            "FiniteMappingMakeFromExpression", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMDomainDeleteCases",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {
+            "FMDomainDeleteCases", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMMap",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMMap", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"]},
+        {
+         ButtonBox["FiniteMappingMakeFromList",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {
+            "FiniteMappingMakeFromList", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMDomainMatrix",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMDomainMatrix", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMMapDomain",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMMapDomain", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"]},
+        {
+         ButtonBox["FiniteMappingMakeFromLists",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {
+            "FiniteMappingMakeFromLists", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMDomainSelect",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMDomainSelect", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMMapKeyed",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMMapKeyed", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"]},
+        {
+         ButtonBox["FiniteMappingMakeFromRules",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {
+            "FiniteMappingMakeFromRules", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMDomainSubset",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMDomainSubset", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMMapValues",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMMapValues", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"]},
+        {
+         ButtonBox["FiniteMappingQ",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FiniteMappingQ", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMEvaluate",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMEvaluate", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMPairing",
+          BaseStyle->"InformationLinkLF",
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMPairing", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"]},
+        {
+         ButtonBox["FMAsAssociation",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMAsAssociation", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMEvaluateAll",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMEvaluateAll", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMRange",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMRange", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"]},
+        {
+         ButtonBox["FMAsRules",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMAsRules", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMEvaluateIndexed",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {
+            "FMEvaluateIndexed", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMRuleCases",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMRuleCases", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"]},
+        {
+         ButtonBox["FMCases",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMCases", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMEvaluateIndexedMultiple",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {
+            "FMEvaluateIndexedMultiple", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMSelect",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMSelect", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"]},
+        {
+         ButtonBox["FMCompose",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMCompose", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMEvaluateMultiple",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {
+            "FMEvaluateMultiple", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMUniverse",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMUniverse", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"]},
+        {
+         ButtonBox["FMConcat",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMConcat", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMForgetDomain",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMForgetDomain", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMUniverseRange",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMUniverseRange", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"]},
+        {
+         ButtonBox["FMDeleteCases",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMDeleteCases", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMGeneralizedInverse",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {
+            "FMGeneralizedInverse", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMUpdate",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMUpdate", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"]},
+        {
+         ButtonBox["FMDeleteMultiple",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {
+            "FMDeleteMultiple", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMInjectiveQ",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMInjectiveQ", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"], 
+         ButtonBox["FMValuesMatrix",
+          BaseStyle->"InformationLinkLF",
+          
+          ButtonData:>{
+           "Info3163680377411-6171725", {"FMValuesMatrix", "FiniteMapping`"}},
+          ButtonNote->"FiniteMapping`"]}
+       },
+       DefaultBaseStyle->"InfoGrid",
+       GridBoxItemSize->{"Columns" -> {{
+            Scaled[0.31666666666666665`]}}}]}
+    },
+    GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}}]}, 
+   Dynamic[Typeset`open$$],
+   ImageSize->Automatic]]], "Print", "InfoCell",
+ CellChangeTimes->{3.6803702112620797`*^9}],
+
+Cell[BoxData[
+ StyleBox["\<\"FiniteMappingMakeFromRules[\!\(\*StyleBox[\\\"ruleset:_[_[_, \
+_]...]\\\", \\\"TI\\\"]\)]\\n\tCreates a new finite mapping from a list of \\\
+\"rules\\\"\\n\\nList of rules can be provided any 'list' of pairs \
+(a,b).\\nPatterns in left-hand sides are treated as Verbatim\"\>", 
+  "MSG"]], "Print", "PrintUsage",
+ CellTags->"Info3163680377411-6171725"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {GridBox[{
+       {
+        RowBox[{
+         RowBox[{"FiniteMappingMakeFromRules", "[", 
+          RowBox[{"ruleset", ":", 
+           RowBox[{"_", "[", 
+            RowBox[{
+             RowBox[{"_", "[", 
+              RowBox[{"_", ",", "_"}], "]"}], "..."}], "]"}]}], "]"}], ":=", 
+         RowBox[{"StackComplete", "[", 
+          RowBox[{"Check", "[", 
+           RowBox[{
+            RowBox[{"CatchAll", "[", 
+             RowBox[{
+              RowBox[{"With", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"a", "=", 
+                  RowBox[{"Association", "[", 
+                   RowBox[{"Evaluate", "[", 
+                    RowBox[{"List", "@@", 
+                    RowBox[{"Apply", "[", 
+                    RowBox[{"Rule", ",", "ruleset", ",", 
+                    RowBox[{"{", "1", "}"}]}], "]"}]}], "]"}], "]"}]}], "}"}],
+                 ",", 
+                RowBox[{"FiniteMapping", "[", 
+                 RowBox[{"Rules", ",", "a"}], "]"}]}], "]"}], ",", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"Message", "[", 
+                  RowBox[{
+                   StyleBox[
+                    RowBox[{"Throw", "::", "nocatch"}], "MessageName"], ",", 
+                   "##1"}], "]"}], ";", "$Failed"}], ")"}], "&"}]}], "]"}], 
+            ",", 
+            RowBox[{
+             RowBox[{"Message", "[", 
+              StyleBox[
+               RowBox[{
+               "PackageDeveloper`Private`PackageDeveloper", "::", 
+                "messages"}], "MessageName"], "]"}], ";", "$Failed"}]}], 
+           "]"}], "]"}]}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{"PackageDeveloper`Private`a", ":", 
+          RowBox[{"FiniteMappingMakeFromRules", "[", "___", "]"}]}], ":=", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"StackInhibit", "[", 
+            RowBox[{"Message", "[", 
+             RowBox[{
+              StyleBox[
+               RowBox[{"General", "::", "undefined"}], "MessageName"], ",", 
+              
+              RowBox[{"\<\"HoldForm\"\>", "[", "PackageDeveloper`Private`a", 
+               "]"}], ",", 
+              RowBox[{"Stack", "[", "]"}]}], "]"}], "]"}], ";", "$Failed"}], 
+          ")"}]}]}
+      },
+      BaselinePosition->{Baseline, {1, 1}},
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxItemSize->{"Columns" -> {{
+           Scaled[0.999]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+        "RowsIndexed" -> {}}]},
+    {" "},
+    {GridBox[{
+       {
+        RowBox[{
+         RowBox[{
+         "SyntaxInformation", "[", "FiniteMappingMakeFromRules", "]"}], "=", 
+         RowBox[{"{", 
+          RowBox[{"\<\"ArgumentsPattern\"\>", "\[Rule]", 
+           RowBox[{"{", "_", "}"}]}], "}"}]}]}
+      },
+      BaselinePosition->{Baseline, {1, 1}},
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxItemSize->{"Columns" -> {{
+           Scaled[0.999]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+        "RowsIndexed" -> {}}]}
+   },
+   BaselinePosition->{Baseline, {1, 1}},
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}}],
+  Definition[FiniteMapping`FiniteMappingMakeFromRules],
+  Editable->False]], "Print",
+ CellTags->"Info3163680377411-6171725"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]]
 },
 WindowSize->{942, 1008},
-WindowMargins->{{Automatic, 360}, {Automatic, 568}},
+WindowMargins->{{Automatic, 215}, {0, Automatic}},
 FrontEndVersion->"10.4 for Microsoft Windows (64-bit) (April 11, 2016)",
 StyleDefinitions->"Default.nb"
 ]
@@ -72,19 +523,46 @@ StyleDefinitions->"Default.nb"
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{}
+CellTagsIndex->{
+ "Info3183680377434-6171725"->{
+  Cell[2271, 71, 424, 7, 96, "Print",
+   CellTags->"Info3183680377434-6171725"]},
+ "Info3163680377411-6171725"->{
+  Cell[14517, 409, 381, 6, 114, "Print",
+   CellTags->"Info3163680377411-6171725"],
+  Cell[14901, 417, 3555, 94, 203, "Print",
+   CellTags->"Info3163680377411-6171725"]}
+ }
 *)
 (*CellTagsIndex
-CellTagsIndex->{}
+CellTagsIndex->{
+ {"Info3183680377434-6171725", 18807, 526},
+ {"Info3163680377411-6171725", 18921, 529}
+ }
 *)
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 171, 2, 90, "Title"],
 Cell[CellGroupData[{
-Cell[776, 28, 631, 15, 72, "Input"],
-Cell[1410, 45, 249, 6, 31, "Output"],
-Cell[1662, 53, 277, 8, 31, "Output"]
+Cell[776, 28, 632, 14, 72, "Input"],
+Cell[1411, 44, 323, 7, 31, "Output"],
+Cell[1737, 53, 355, 9, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2129, 67, 139, 2, 31, "Input"],
+Cell[2271, 71, 424, 7, 96, "Print",
+ CellTags->"Info3183680377434-6171725"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2732, 83, 129, 2, 31, "Input"],
+Cell[CellGroupData[{
+Cell[2886, 89, 11628, 318, 377, "Print"],
+Cell[14517, 409, 381, 6, 114, "Print",
+ CellTags->"Info3163680377411-6171725"],
+Cell[14901, 417, 3555, 94, 203, "Print",
+ CellTags->"Info3163680377411-6171725"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]]
 }
